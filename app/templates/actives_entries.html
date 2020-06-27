@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block head %}
+	{{ super() }}
+<!--     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}"> -->
+{% endblock %}
+
+{% block title %}Actives Entries{% endblock %}
+
+{% block nav %}
+	<form>
+		<input type="search" name="search_active_entry">
+		<button type="submit">Search</button>
+	</form>
+{% endblock %}
+
+{% block body %}
+	<h1>Entry Result</h1>
+	{% for visitor in actives_entries %}
+		<div data-id="{{ visitor.id }}" class="card">
+			<div>
+				<h4>{{ visitor.name }}</h4>
+				<h5>{{ visitor.email }}</h5>
+				<p>{{ visitor.person_visited }}</p>
+			</div>
+			<div class="time_detail">
+				<div>
+					<p>Entry: {{ visitor.entry_time }}</p>
+				</div>
+				<button data-id="{{ visitor.id }}" class="exit_button">Exit Campus</button>
+			</div>
+		</div>
+	{% endfor %}
+{% endblock %}

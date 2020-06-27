@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block head %}
+	{{ super() }}
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}"> -->
+{% endblock %}
+
+{% block title %}Entrance{% endblock %}
+
+{% block nav %}
+	<ul>
+		<li><a href="{{url_for('main.actives_entries')}}">Active Entries</a></li>
+		<li><a href="{{url_for('main.all_entries')}}">All Entries</a></li>
+	</ul>
+{% endblock %}
+
+{% block body %}
+	<div id="form_block">
+		{% for message in get_flashed_messages() %}
+			<h4>{{ message }}</h4>
+		{% endfor %}
+		<form id="entrance_form" action="{{url_for('main.entrance')}}" method="POST">
+			<input type="text" name="name" placeholder="Enter name"><br>
+			<input type="email" name="email" placeholder="Enter email"><br>
+			<input type="text" name="person_visited" placeholder="Enter person visited"><br>
+			<button type="submit">Enter Now</button>
+		</form>
+	</div>
+{% endblock %}

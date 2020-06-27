@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% block head %}
+		<title>{% block title %}{% endblock %}</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="author" content="Cedric Murairi">
+		<meta name="description" content="ALU Operations FrontDesk Service">
+		<link rel="stylesheet" type="text/css" href="/static/css/main.css">
+	{% endblock %}
+</head>
+<body>
+	<header>
+		<div id="logo"><img width="100px" src="/static/img/alu_logo_original.png"></div>
+		<nav>
+			{% block nav %}{% endblock %}
+		</nav>
+	</header>
+	<hr>
+	<section>
+		{% block body %}Here is the show{% endblock %}
+	</section>
+	<hr>
+	<footer>
+		<div id="left-footer-component">&copy African Leadership University 2020</div>
+		<div id="right-footer-component"></div>
+	</footer>
+	<script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+	<script>
+		// compile the template
+		var template = Handlebars.compile("Handlebars <b>{{doesWhat}}</b>");
+		// execute the compiled template and print the output to the console
+		console.log(template({ doesWhat: "rocks!" }));
+	</script>
+	<script type="text/javascript" src="/static/javascript/main.js"></script>
+</body>
+</html>

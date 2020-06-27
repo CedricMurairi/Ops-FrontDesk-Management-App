@@ -1,0 +1,242 @@
+body{
+	min-width: 318px;
+	width: 80%;
+	margin: auto;
+	height: 100vh;
+	z-index: 100;
+}
+
+header{
+	display: flex;
+	justify-content: space-between;
+	min-height: 10vh;
+}
+
+#logo{
+	flex: 1;
+	padding-top: 2px;
+}
+
+nav{
+	flex: 3;
+	display: flex;
+	flex-grow: 1;
+}
+
+header ul{
+	list-style-type: none;
+}
+
+header li{
+	display: inline-block;
+}
+
+a{
+	text-decoration: none;
+}
+
+a:visited{
+	color: black;
+}
+
+#form_block{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 50px;
+}
+
+#entrance_form{
+	width: 90%;
+}
+
+/*#entries{
+	display: grid;
+  	grid-template-columns: 1fr 1fr;
+  	grid-template-rows: auto;
+}*/
+
+section {
+	height: 80vh;
+  	overflow:   scroll;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+
+footer{
+	height: auto;
+}
+
+.card{
+	padding: 0px 10px;
+	display: flex;
+	max-height: 100px;
+	justify-content: space-between;
+	border-radius: 5px;
+	box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+	margin: 5px 10px;
+	animation: fade-in-slide-up 1s ease-in-out forwards;
+	animation-play-state: paused;
+}
+
+.card div:nth-child(2){
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: fit-content;
+}
+
+.card h2, h3, h4, h5, h6{
+	padding: 0px;
+	margin: 0px;
+	margin: 5px 0px;
+}
+
+header li, button{
+	padding: 10px 5px;
+	background-color: white;
+	color: black;
+	font-weight: bold;
+	border-radius: 5px;
+	border: 1px solid rgba(0, 0, 0, 0.5);
+	/*box-shadow: 1px 1px 1px black;*/
+	outline: none;
+	cursor: pointer;
+}
+
+input[type='text'], input[type='search'], input[type='email']{
+	padding: 10px 5px;
+	border-radius: 5px;
+	outline: none;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	margin: 5px 0px;
+	width: 500px;
+}
+
+input[type='search']{
+	width: 300px;
+}
+
+.time_detail p{
+	font-size: 12px;
+	color: grey;
+	padding: 0px;
+	margin: 0px;
+	margin: 5px;
+	font-weight: bold;
+}
+
+.show_details{
+	display: none;
+	z-index: 500;
+	position: absolute;
+	top: 30%;
+	left: 30%;
+	background-color: white;
+	width: 30%;
+	height: 30%;
+	margin: auto;
+	padding: 20px 20px;
+	border-radius: 10px;
+	text-align: center;
+	box-shadow: rgba(255, 255, 255, 0.3);
+}
+
+.cover{
+	display: none;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 200;
+}
+
+
+@media screen and (max-width: 800px){
+	body{
+		/*background-color: red;*/
+	}
+
+	input[type='search']{
+		width: auto;
+		flex: 2;
+	}
+
+	nav form button{
+		flex: 1;
+	}
+
+	input[type='text'], input[type='search'], input[type='email']{
+		width: 100%;
+	}
+
+	.time_detail p{
+		font-size: 8px;
+	}
+
+	.card div:nth-child(2){
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+}
+
+
+@media screen and (max-width: 450px){
+	body{
+		/*background-color: yellow;*/
+		width: 95%;
+	}
+
+	nav, header{
+		display: block;
+	}
+
+	nav{
+		text-align: left;
+	}
+
+	.time_detail p{
+		display: none;
+	}
+
+	.card button{
+		font-size: 12px;
+	}
+
+	input[type='search']{
+		width: 80%;
+	}
+
+	nav{
+		padding-top: 20px;
+	}
+}
+
+
+@keyframes fade-in-slide-up{
+	0%{
+		opacity: 1;
+		height: 100%;
+	}
+
+	75%{
+		opacity: 0;
+		height: 50%;
+		height: 100%;
+		line-height: 100%;
+	}
+
+	100%{
+		opacity: 0;
+		height: 0px;
+		line-height: 0px;
+		margin: 0px;
+		padding: 0px;
+	}
+}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block head %}
+	{{ super() }}
+<!--     <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}"> -->
+{% endblock %}
+
+{% block title %}All Entries{% endblock %}
+
+{% block nav %}
+	<form id="all_search">
+		<input id="search_input" type="search" name="search_all_entry">
+		<button id="search_button" type="submit">Search</button>
+	</form>
+{% endblock %}
+
+{% block body %}
+	<div class="cover"></div>
+	<h1>Entry Results</h1>
+	<div id="entries">
+		{% for visitor in all_entries %}
+			<div data-id="{{ visitor.id }}" class="show_details">
+				<h4>{{ visitor.name }}</h4>
+				<h5>{{ visitor.email }}</h5>
+				<p>{{ visitor.person_visited }}</p>
+				<div class="time_detail">
+					<p>Entry: {{ visitor.entry_time }}</p>
+					{% if visitor.is_out %}
+						<p>Exit: {{ visitor.exit_time }}</p>
+					{% endif %}
+				</div>
+			</div>
+			<div data-id="{{ visitor.id }}" class="card">
+				<div>
+					<h4>{{ visitor.name }}</h4>
+					<h5>{{ visitor.email }}</h5>
+					<p>{{ visitor.person_visited }}</p>
+				</div>
+				<div>
+					<div class="time_detail">
+						<p>Entry: {{ visitor.entry_time }}</p>
+						{% if visitor.is_out %}
+							<p>Exit: {{ visitor.exit_time }}</p>
+						{% endif %}
+					</div>
+					{% if visitor.is_out %}
+						<button data-id="{{ visitor.id }}" class="visitor_detail_button">View Details</button>
+					{% else %}
+						<button data-id="{{ visitor.id }}" class="exit_button">Exit Campus</button>
+					{% endif %}
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+	<script type="text/javascript">console.log('I am in the mainframe')</script>
+{% endblock %}
