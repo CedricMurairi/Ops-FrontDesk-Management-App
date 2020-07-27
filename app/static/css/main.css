@@ -12,18 +12,13 @@ header{
 	min-height: 10vh;
 }
 
-#logo{
-	flex: 1;
-	padding-top: 2px;
-}
-
-nav{
-	flex: 3;
-	display: flex;
-	flex-grow: 1;
+#logo, nav{
+	/*flex: 1;*/
+	margin: 20px 10px 10px 10px;
 }
 
 header ul{
+	margin: 0px;
 	list-style-type: none;
 }
 
@@ -35,7 +30,7 @@ a{
 	text-decoration: none;
 }
 
-a:visited{
+a:visited, a{
 	color: black;
 }
 
@@ -43,12 +38,13 @@ a:visited{
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items: center;
+	/*align-items: center;*/
 	margin-top: 50px;
 }
 
 #entrance_form{
-	width: 90%;
+	/*width: 90%;*/
+	align-self: center;
 }
 
 /*#entries{
