@@ -1,18 +1,54 @@
 var visitor_detail_button = document.querySelectorAll('.visitor_detail_button');
 var exit_button_all = document.querySelectorAll('.exit_button');
 
-var search_form = document.querySelector('#all_search').onsubmit = ()=>{
+// const template = Handlebars.compile(document.querySelector('#card').innerHTML);
+
+// test code start. To be deleted
+
+// console.log(document.querySelector('#card').innerHTML);
+
+// const content = template({ name: "Cedric", age: "24" });
+
+// const template1 = Handlebars.compile('<li class="{{ number }}">my name is {{ name }}</li> <h1>Let\'s go to the next {{ option }}</h1');
+
+// const content1 = template1({ number: "3", name: "CedricMurairi", option: "level" });
+
+// document.querySelector('#left-footer-component').onclick = function(){
+// 	console.log('left-footer clicked');
+// 	document.querySelector('#entries').innerHTML = content1;
+// }
+
+
+var source = Handlebars.compile(document.getElementById("entry-template").innerHTML);
+
+var html = source({ title: "My New Post", body: "This is my first post!" });
+
+console.log(html);
+// test block, test code end of
+
+// console.log(content1);
+
+window.addEventListener('click', event => {
+	if (event.target === document.querySelector('.cover')) {
+		document.querySelector('.cover').style.display = "none";
+		document.querySelectorAll('.show_details').forEach(card => {
+			card.style.display = "none";
+		})
+	}
+});
+
+document.querySelector('#all_search').onsubmit = () => {
 	alert('submitted');
 	console.log('submitted');
 	const input = document.querySelector('#search_input').value;
-	console.log(input);
 
 	var request = new XMLHttpRequest();
 
-	request.onload = function(){
-		if(request.readyState === XMLHttpRequest.DONE){
-			if(request.status === 200){
-				document.querySelector('')
+	request.onload = function () {
+		if (request.readyState === XMLHttpRequest.DONE) {
+			if (request.status === 200) {
+				// document.querySelector('#entries').innerHTML = JSON.parse(request.responseText);
+				console.log(JSON.parse(request.responseText));
 			}
 		}
 		else
@@ -30,11 +66,11 @@ var search_form = document.querySelector('#all_search').onsubmit = ()=>{
 }
 
 
-document.querySelectorAll('.visitor_detail_button').forEach(function(button){
-	button.addEventListener('click', function(){
+document.querySelectorAll('.visitor_detail_button').forEach(function (button) {
+	button.addEventListener('click', function () {
 		var id = button.dataset.id;
-		document.querySelectorAll('.show_details').forEach(function(card_detail){
-			if(card_detail.dataset.id === id){
+		document.querySelectorAll('.show_details').forEach(function (card_detail) {
+			if (card_detail.dataset.id === id) {
 				card_detail.style.display = "block";
 				document.querySelector('.cover').style.display = "block";
 			}
@@ -42,8 +78,8 @@ document.querySelectorAll('.visitor_detail_button').forEach(function(button){
 	})
 });
 
-exit_button_all.forEach(function(button){
-	button.addEventListener('click', function(){
+exit_button_all.forEach(function (button) {
+	button.addEventListener('click', function () {
 		var visitor_id = this.dataset.id;
 		// console.log(visitor_id);
 
@@ -52,14 +88,14 @@ exit_button_all.forEach(function(button){
 		// request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 		// httpRequest.open("POST", '/exit', true);
 
-		httpRequest.onload = function(){
-			try{
-				if(httpRequest.readyState === XMLHttpRequest.DONE){
-					if(httpRequest.status === 200){
+		httpRequest.onload = function () {
+			try {
+				if (httpRequest.readyState === XMLHttpRequest.DONE) {
+					if (httpRequest.status === 200) {
 						console.log(JSON.parse(httpRequest.responseText));
-						document.querySelectorAll('.card').forEach(function(card){
+						document.querySelectorAll('.card').forEach(function (card) {
 							var id = card.dataset.id;
-							if(id === visitor_id){
+							if (id === visitor_id) {
 								card.style.animationPlayState = "running";
 							}
 						});
@@ -69,7 +105,7 @@ exit_button_all.forEach(function(button){
 					else
 						console.log("nothing here little boy");
 				}
-			}catch(error){
+			} catch (error) {
 				console.log(error);
 			}
 		};
@@ -84,4 +120,5 @@ exit_button_all.forEach(function(button){
 		httpRequest.send(data);
 
 		return false;
-});})
+	});
+})
