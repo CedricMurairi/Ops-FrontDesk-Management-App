@@ -1,31 +1,21 @@
 var visitor_detail_button = document.querySelectorAll('.visitor_detail_button');
 var exit_button_all = document.querySelectorAll('.exit_button');
 
-// const template = Handlebars.compile(document.querySelector('#card').innerHTML);
-
-// test code start. To be deleted
-
-// console.log(document.querySelector('#card').innerHTML);
-
-// const content = template({ name: "Cedric", age: "24" });
-
-// const template1 = Handlebars.compile('<li class="{{ number }}">my name is {{ name }}</li> <h1>Let\'s go to the next {{ option }}</h1');
-
-// const content1 = template1({ number: "3", name: "CedricMurairi", option: "level" });
-
-// document.querySelector('#left-footer-component').onclick = function(){
-// 	console.log('left-footer clicked');
-// 	document.querySelector('#entries').innerHTML = content1;
-// }
-
-
 var source = Handlebars.compile(document.getElementById("entry-template").innerHTML);
+
+var template_card_blueprint = Handlebars.compile(document.getElementById("template_card").innerHTML);
 
 var html = source({ title: "My New Post", body: "This is my first post!" });
 
 console.log(html);
-// test block, test code end of
 
+// var visitor_result = [{'name': 'cedric', 'email': 'c.murairi@gmail.com', 'id': 1},{'name': 'Sylvain', 'email': 's.bebutsa@gmail.com', 'id': 2}];
+
+// var final_card_template = template_card_blueprint({ visitor: visitor_result });
+
+// console.log(final_card_template);
+// test block, test code end of
+// document.getElementById('main_section').innerHTML = final_card_template;
 // console.log(content1);
 
 window.addEventListener('click', event => {
@@ -37,33 +27,50 @@ window.addEventListener('click', event => {
 	}
 });
 
-document.querySelector('#all_search').onsubmit = () => {
-	alert('submitted');
-	console.log('submitted');
-	const input = document.querySelector('#search_input').value;
 
-	var request = new XMLHttpRequest();
+if(document.querySelector('#all_search') !== null){
+	document.querySelector('#all_search').onsubmit = () => {
+		let visitor_result = [];
+		alert('submitted');
+		console.log('submitted');
+		const input = document.querySelector('#search_input').value;
 
-	request.onload = function () {
-		if (request.readyState === XMLHttpRequest.DONE) {
-			if (request.status === 200) {
-				// document.querySelector('#entries').innerHTML = JSON.parse(request.responseText);
-				console.log(JSON.parse(request.responseText));
+		var request = new XMLHttpRequest();
+
+		request.onload = function () {
+			if (request.readyState === XMLHttpRequest.DONE) {
+				if (request.status === 200) {
+					// document.querySelector('#entries').innerHTML = JSON.parse(request.responseText);
+					let response = JSON.parse(request.responseText);
+					console.log(response);
+					try{
+						response.forEach((element_response) => {
+							if(element_response.visitor_exist){
+								visitor_result.push(element_response);
+							}
+						});
+						console.log(visitor_result);
+					}catch(e){
+						console.log({'message': 'No such a visitor in our records'});
+						console.log(e);
+					}
+				}
 			}
+			else
+				console.log('No response for now');
 		}
-		else
-			console.log('No response for now');
+
+		request.open('POST', window.origin + '/search', true);
+
+		var data = new FormData();
+		data.append("visitor_name", input);
+
+		request.send(data);
+
+		return false;
 	}
-
-	request.open('POST', window.origin + '/search', true);
-
-	var data = new FormData();
-	data.append("visitor_name", input);
-
-	request.send(data);
-
-	return false;
 }
+
 
 
 document.querySelectorAll('.visitor_detail_button').forEach(function (button) {
