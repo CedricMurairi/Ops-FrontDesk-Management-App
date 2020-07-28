@@ -1,73 +1,73 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-	{% block head %}
-	<title>{% block title %}{% endblock %}</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="author" content="Cedric Murairi">
-	<meta name="description" content="ALU Operations FrontDesk Service">
-	<link rel="stylesheet" type="text/css" href="/static/css/main.css">
-	{% endblock %}
-</head>
+	<head>
+		{% block head %}
+		<title>{% block title %}{% endblock %}</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="author" content="Cedric Murairi">
+		<meta name="description" content="ALU Operations FrontDesk Service">
+		<link rel="stylesheet" type="text/css" href="/static/css/main.css">
+		{% endblock %}
+	</head>
 
-<body>
-	<header>
-		<div id="logo"><img width="100px" src="/static/img/alu_logo_original.png"></div>
-		<nav>
-			{% block nav %}{% endblock %}
-		</nav>
-	</header>
-	<hr>
-	<section>
-		<div id="main_section">
-			{% block body %}Here is the show{% endblock %}
-		</div>
-	</section>
-	<hr>
-	<footer>
-		<div id="left-footer-component">&copy African Leadership University 2020</div>
-		<div id="right-footer-component"></div>
-	</footer>
-	<script src="/static/javascript/handlebars-v4.7.6.js"></script>
-	<script id="entry-template" type="text/template">
-		{% raw -%}
-			<div class="entry">
-			    <h1>{{title}}</h1>
-			    <div class="body">
-			    	{{body}}
-				</div>
+	<body>
+		<header>
+			<div id="logo"><img width="100px" src="/static/img/alu_logo_original.png"></div>
+			<nav>
+				{% block nav %}{% endblock %}
+			</nav>
+		</header>
+		<hr>
+		<section>
+			<div id="main_section">
+				{% block body %}Here is the show{% endblock %}
 			</div>
-		{%- endraw %}
-	</script>
-	<script id="template_card" type="text/template">
-		{% raw -%}
-			{{#each visitor}}
-				<div data-id="{{ this.id }}" class="card">
-					<div>
-						<h4>{{ this.name }}</h4>
-						<h5>{{ this.email }}</h5>
-						<p>{{ this.person_visited }}</p>
-					</div>
-					<div>
-						<div class="time_detail">
-							<p>Entry: {{ this.entry_time }}</p>
-							{% if this.is_out %}
-								<p>Exit: {{ this.exit_time }}</p>
-							{% endif %}
-						</div>
-						{% if this.is_out %}
-							<button data-id="{{ this.id }}" class="visitor_detail_button">View Details</button>
-						{% else %}
-							<button data-id="{{ this.id }}" class="exit_button">Exit Campus</button>
-						{% endif %}
+		</section>
+		<hr>
+		<footer>
+			<div id="left-footer-component">&copy African Leadership University 2020</div>
+			<div id="right-footer-component"></div>
+		</footer>
+		<script src="/static/javascript/handlebars-v4.7.6.js"></script>
+		<script id="entry-template" type="text/template">
+			{% raw -%}
+				<div class="entry">
+				    <h1>{{title}}</h1>
+				    <div class="body">
+				    	{{body}}
 					</div>
 				</div>
-			{{/each}}
-		{%- endraw%}
-	</script>
-	<script type=" text/javascript" src="/static/javascript/main.js"></script>
-</body>
+			{%- endraw %}
+		</script>
+		<script id="template_card" type="text/template">
+			{% raw -%}
+				{{#each visitor}}
+					<div data-id="{{ this.visitor_id }}" class="card">
+						<div>
+							<h4>{{ this.visitor_name }}</h4>
+							<h5>{{ this.visitor_email }}</h5>
+							<p>{{ this.visitor_person_visited }}</p>
+						</div>
+						<div>
+							<div class="time_detail">
+								<p>Entry: {{ this.visitor_entry_time }}</p>
+								{{#if this.visitor_is_out}}
+									<p>Exit: {{ this.visitor_exit_time }}</p>
+								{{/if}}
+							</div>
+							{{#if this.visitor_is_out}}
+								<button data-id="{{ this.visitor_id }}" class="visitor_detail_button" onclick=showCardDetail(this)>View Details</button>
+							{{else}}
+								<button data-id="{{ this.visitor_id }}" class="exit_button">Exit Campus</button>
+							{{/if}}
+						</div>
+					</div>
+				{{/each}}
+			{%- endraw %}
+		</script>
+		<script type=" text/javascript" src="/static/javascript/main.js"></script>
+	</body>
 
 </html>
