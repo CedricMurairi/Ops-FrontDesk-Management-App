@@ -11,6 +11,7 @@ class Config():
 	APPLICATION_MAIL_SENDER = 'ALU Operations <info@aluoperations.com>'
 	APPLICATION_ADMIN = os.environ.get('APPLICATION_ADMIN')
 
+	@staticmethod
 	def init_app(app):
 		pass
 
@@ -28,7 +29,7 @@ class TestingConfig(Config):
 	SQLALCHEMY_DATABASE_URI = os.environ.get('TEST_DATABASE_URL') or 'sqlite:///' + os.path.join(basedir, 'data-test.sqlite')
 
 class ProductionConfig(Config):
-	SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
 
 config = {
 	'development': DevelopmentConfig,

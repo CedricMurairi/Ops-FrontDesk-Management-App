@@ -18,4 +18,8 @@ def create_app(config_name):
 	app.register_blueprint(main_blueprint)
 	app.add_url_rule('/', endpoint='index')
 
+	@app.route('/hello')
+	def hello():
+		return '<h2>Hello world. The greatest man on the show</h2>'
+
 	return app

@@ -80,6 +80,6 @@ def search():
 
 	print(visitors)
 	for visitor in visitors:
-		visitors_list = [{"visitor_exist": True, "visitor_id": visitor.id, "visitor_name": visitor.name, "visitor_email": visitor.email, "visitor_person_visted": visitor.person_visited, "visitor_entry_time": visitor.entry_time, "visitor_exit_time": visitor.exit_time, "visitor_is_out": visitor.is_out, }]
+		visitors_list = [{"visitor_exist": True, "visitor_id": visitor.id, "visitor_name": visitor.name, "visitor_email": visitor.email, "visitor_person_visited": visitor.person_visited, "visitor_entry_time": visitor.entry_time, "visitor_exit_time": visitor.exit_time, "visitor_is_out": visitor.is_out, }]
 
 	return jsonify(visitors_list)
