@@ -2,7 +2,7 @@
 
 This application came from the idea that most of the front-desk people in my community are using huge books and lots of papers to record entries in a building, store or some sort of public space for security reasons.
 
-I created this app to help people use the technology the are familliar with to accomplish the same task with just a software. No paperm no huge books, just a phone, a tablet or a computer and some database doing the dirty work for you!!
+I created this app to help frontdesk people use the technology the are familliar with to accomplish the same task with just a software. No papers, no huge books, no pens, just a phone, a tablet or a computer and some database doing the dirty work for you!!
 
 # What I learned
 
