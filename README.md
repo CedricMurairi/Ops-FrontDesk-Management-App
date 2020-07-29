@@ -1,20 +1,20 @@
 # Ops-FrontDesk-Management-App
 
-This application came from the idea that most of the front-desk people in my community are using huge books and lots of papers to record entries in a building, store or some sort of public space for security reasons.
+This application came from the idea that most of the front-desk people in my community are using huge books and lots of papers to record entries in a building, store, or some public space for security reasons.
 
-I created this app to help frontdesk people use the technology the are familliar with to accomplish the same task with just a software. No papers, no huge books, no pens, just a phone, a tablet or a computer and some database doing the dirty work for you!!
+I created this app to help front desk people use the technology they are familiar with to accomplish the same task with just software. No papers, no huge books, no pens, just a phone, a tablet or a computer and some database, doing the dirty work for you!!
 
 # What I learned
 
-From building this app I learned a lot about asynchronous programing with Javescript and AJAX to fetch data from the server and keep the user joyful.
+From building this app, I learned a lot about asynchronous programming with Javascript and AJAX to fetch data from the server and keep the user joyful.
 
-I learned a lot about the Handlebars template language since I used it to render the data recieved form my view function into beautifull cards with visitor details.
+I learned a lot about the Handlebars template language since I used it to render the data received from my view function into beautiful cards with visitor details.
 
-Most of all I learned and improve my understanding of the Flask framework, the python language and the Postgresql Database System.
+I learned and improved my understanding of the Flask framework, the python language, and the Postgresql Database System.
 
 # What I used
 
-To build this project I could use different tools and techniques, here are my choices:
+To build this project, I could use different tools and techniques; here are my choices:
 
 * Flask, for the backed
 * Postgresql, for datastorage
