@@ -27,8 +27,6 @@ if(document.querySelector('#all_search') !== null){
 	document.querySelector('#all_search').onsubmit = () => {
 
 		let visitor_result = [];
-		alert('submitted');
-		console.log('submitted');
 		const input = document.querySelector('#search_input').value;
 
 		var request = new XMLHttpRequest();
@@ -53,7 +51,7 @@ if(document.querySelector('#all_search') !== null){
 						// console.log(visitor_result);
 						let final_card_template = template_card_blueprint({ visitor: visitor_result });
 						// console.log(final_card_template);
-						document.getElementById('cards_container').innerHTML = final_card_template;
+						document.getElementById('main_section').innerHTML = final_card_template;
 
 					}catch(e){
 						console.log({'message': 'No such a visitor in our records'});
@@ -85,6 +83,7 @@ document.querySelectorAll('.visitor_detail_button').forEach((button) => {
 
 
 function showCardDetail(button){
+	console.log('print details')
 	var id = button.dataset.id;
 	document.querySelectorAll('.show_details').forEach(function (card_detail) {
 		// check if the visitor card data-id is equal to the clicked button's id to display details about that specif user id
@@ -99,46 +98,51 @@ function showCardDetail(button){
 
 exit_button_all.forEach(function (button) {
 	button.addEventListener('click', function () {
-		// visitor id is the id of the clicked button
-		var visitor_id = this.dataset.id;
-		// console.log(visitor_id);
-
-		var httpRequest = new XMLHttpRequest();
-
-		httpRequest.onload = function () {
-			try {
-
-				if (httpRequest.readyState === XMLHttpRequest.DONE) {
-
-					if (httpRequest.status === 200) {
-						console.log(JSON.parse(httpRequest.responseText));
-						document.querySelectorAll('.card').forEach(function (card) {
-							var id = card.dataset.id;
-							// check if the data-id of the card holding the button is the same as the button's data-id -> visitor_id to change it's animation to running and remove the card
-							if (id === visitor_id) {
-								card.style.animationPlayState = "running";
-							}
-
-						});
-
-					}
-
-					else
-						console.log("nothing here little boy");
-				}
-
-			} catch (error) {
-				console.log(error);
-			}
-		};
-
-		var data = new FormData();
-		data.append('id', visitor_id);
-
-		httpRequest.open("POST", window.origin + '/exit', true);
-
-		httpRequest.send(data);
-
-		return false;
+		exitCampus(button);
 	});
 })
+
+
+function exitCampus(button){
+	// visitor id is the id of the clicked button
+	var visitor_id = button.dataset.id;
+	console.log(visitor_id);
+
+	var httpRequest = new XMLHttpRequest();
+
+	httpRequest.onload = function () {
+		try {
+
+			if (httpRequest.readyState === XMLHttpRequest.DONE) {
+
+				if (httpRequest.status === 200) {
+					console.log(JSON.parse(httpRequest.responseText));
+					document.querySelectorAll('.card').forEach(function (card) {
+						var id = card.dataset.id;
+						// check if the data-id of the card holding the button is the same as the button's data-id -> visitor_id to change it's animation to running and remove the card
+						if (id === visitor_id) {
+							card.style.animationPlayState = "running";
+						}
+
+					});
+
+				}
+
+				else
+					console.log("nothing here little boy");
+			}
+
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	var data = new FormData();
+	data.append('id', visitor_id);
+
+	httpRequest.open("POST", window.origin + '/exit', true);
+
+	httpRequest.send(data);
+
+	return false;
+}
