@@ -26,7 +26,6 @@ To build this project I could use different tools and techniques, here are my ch
 
 # How to install
 
-'''bash
 	$ git clone https://github.com/CedricMurairi/Ops-FrontDesk-Management-App.git
 
 	$ cd Ops-FrontDesk-Management-App
@@ -40,8 +39,7 @@ To build this project I could use different tools and techniques, here are my ch
 	$ python3 manage.py db migrate
 
 	$ flask run
-'''
 
 # Connect with me
 
-http://github.com/CedricMurairi - automatic! http://twitter.com/CMurairi - automatic! https://www.linkedin.com/in/cedric-murairi/ - automatic! http://instagram.com/cedricmurairi/ - automatic!
+http://github.com/CedricMurairi | http://twitter.com/CMurairi | https://www.linkedin.com/in/cedric-murairi/ | http://instagram.com/cedricmurairi/
