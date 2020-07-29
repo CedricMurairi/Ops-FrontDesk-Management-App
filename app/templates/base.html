@@ -43,7 +43,20 @@
 		</script>
 		<script id="template_card" type="text/template">
 			{% raw -%}
+				<div class="cover"></div>
+				<h1>Entry Results</h1>
 				{{#each visitor}}
+					<div data-id="{{ this.visitor_id }}" class="show_details">
+						<h4>{{ this.visitor_name }}</h4>
+						<h5>{{ this.visitor_email }}</h5>
+						<p>{{ this.visitor_person_visited }}</p>
+						<div class="time_detail">
+							<p>Entry: {{ this.visitor_entry_time }}</p>
+							{{#if this.visitor_is_out}}
+								<p>Exit: {{ this.visitor_exit_time }}</p>
+							{{/if}}
+						</div>
+					</div>
 					<div data-id="{{ this.visitor_id }}" class="card">
 						<div>
 							<h4>{{ this.visitor_name }}</h4>
@@ -60,7 +73,7 @@
 							{{#if this.visitor_is_out}}
 								<button data-id="{{ this.visitor_id }}" class="visitor_detail_button" onclick=showCardDetail(this)>View Details</button>
 							{{else}}
-								<button data-id="{{ this.visitor_id }}" class="exit_button">Exit Campus</button>
+								<button data-id="{{ this.visitor_id }}" class="exit_button" onclick=exitCampus(this)>Exit Campus</button>
 							{{/if}}
 						</div>
 					</div>
